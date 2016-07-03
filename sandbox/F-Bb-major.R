@@ -72,7 +72,7 @@ view_fret <- function(ds,object=Fmaj7){
   s1 <- ds2 %>% dplyr::filter(string_1) %>% dplyr::select(s1)
   
   fretboard <- as.data.frame(dplyr::bind_cols(frets, s6, s5, s4,s3, s2, s1, frets))
-  print(fretboard)
+  # print(fretboard)
   return(fretboard)
   
 }

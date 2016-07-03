@@ -6,6 +6,12 @@
 rm(list=ls(all=TRUE))  #Clear the variables from previous runs.
 cat("\f") # clear console 
 
+library(magrittr) # enables piping : %>% 
+requireNamespace("ggplot2") # graphing
+requireNamespace("tidyr")   # data manipulation
+requireNamespace("dplyr")   # Avoid attaching dplyr, b/c its function names conflict with a lot of packages (esp base, stats, and plyr).
+requireNamespace("testit")  # For asserting conditions meet expected patterns.
+
 strings <- structure(list(note_id = c("C0", " C#0/Db0 ", "D0", " D#0/Eb0 ", 
 "E0", "F0", " F#0/Gb0 ", "G0", " G#0/Ab0 ", "A0", " A#0/Bb0 ", 
 "B0", "C1", " C#1/Db1 ", "D1", " D#1/Eb1 ", "E1", "F1", " F#1/Gb1 ", 
@@ -127,15 +133,15 @@ view_fret <- function(ds,object=Fmaj7){
   s1 <- ds2 %>% dplyr::filter(string_1) %>% dplyr::select(s1)
   
   fretboard <- as.data.frame(dplyr::bind_cols(frets, s6, s5, s4,s3, s2, s1, frets))
-  print(fretboard)
+  # print(fretboard)
   return(fretboard)
   
 }
 
-Fmaj7 <- c("F","E", "A", "C")
-Gm7 <- c("G", "F", "A-B", "D")
-accord <- Fmaj7
-knitr::kable(view_fret(ds,accord))
+# Fmaj7 <- c("F","E", "A", "C")
+# Gm7 <- c("G", "F", "A-B", "D")
+# accord <- Fmaj7
+# view_fret(ds,accord)
 
 
 
