@@ -8,19 +8,19 @@ To use [Fret Printer](https://github.com/andkov/gitRmusic/blob/master/print-fret
 Print on Fret
 =======================
 
-```{r block1, echo=F, message=F}
+\```{r block1, echo=F, message=F}
 library(dplyr)
 frets <- data.frame("fret" = c(
  "o","---","","","","---","","---","","","","","---","","",""
 ))
 source("https://raw.githubusercontent.com/andkov/gitRmusic/master/print-fret.R")
-```
+\```
 
-```{r block2, echo=T}
+\```{r block2, echo=T}
 Fmaj7 <- c("F","E", "A", "C")
 accord <- Fmaj7
 knitr::kable(view_fret(ds,accord), format="markdown",align="c")
-```
+\```
 
 
 ```
