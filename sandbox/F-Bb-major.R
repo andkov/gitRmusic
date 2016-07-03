@@ -34,7 +34,6 @@ head(ds0)
 
 
 # ---- define-scales ------------------------------------------------------------
-# 1046.5
 ds <- ds0 %>% 
   dplyr::filter(880 >= frequency_hz, frequency_hz >= 82.41) %>% 
   dplyr::mutate(
@@ -48,37 +47,7 @@ ds <- ds0 %>%
   dplyr::select(-note_id, -wavelength_cm, -note2)
 ds
 
-
-# ---- proto-function-to-print-on-fret ---------------------
-# major_scale <- c("T","F","T","F","T","T","F","T","F","T","F","T")
-major_scale_C <- c("C", "D", "E", "F", "G", "A", "B")   
-ds2 <- ds %>%  
-  dplyr::mutate( 
-    selector = note %in% major_scale_C, 
-    s6 = ifelse(string_6 & selector,note,"."),
-    s5 = ifelse(string_5 & selector,note,"."),
-    s4 = ifelse(string_4 & selector,note,"."),
-    s3 = ifelse(string_3 & selector,note,"."),
-    s2 = ifelse(string_2 & selector,note,"."),
-    s1 = ifelse(string_1 & selector,note,".") 
-  )
-# play = factor(C_major, levels = c(T,F), labels = c("X",".")))    
-ds2   
-
-frets <- data.frame("fret" = c("o","I","","","","V","","VII","","","","","XII","","",""))
-
-s6 <- ds2 %>% dplyr::filter(string_6) %>% dplyr::select(s6)
-s5 <- ds2 %>% dplyr::filter(string_5) %>% dplyr::select(s5)
-s4 <- ds2 %>% dplyr::filter(string_4) %>% dplyr::select(s4)
-s3 <- ds2 %>% dplyr::filter(string_3) %>% dplyr::select(s3)
-s2 <- ds2 %>% dplyr::filter(string_2) %>% dplyr::select(s2)
-s1 <- ds2 %>% dplyr::filter(string_1) %>% dplyr::select(s1)
-
-fretboard <- as.data.frame(dplyr::bind_cols(frets, s6, s5, s4,s3, s2, s1))
-
 # ---- define-function-print-on-fret ---------------------
-major_scale_C <- c("C", "D", "E", "F", "G", "A", "B")   
-Fmaj7 <- c("F","E", "A", "C")
 view_fret <- function(ds,object=Fmaj7){
   ds2 <- ds %>%  
     dplyr::mutate( 
@@ -107,6 +76,7 @@ view_fret <- function(ds,object=Fmaj7){
   return(fretboard)
   
 }
+
 Fmaj7 <- c("F","E", "A", "C")
 Gm7 <- c("G", "F", "A-B", "D")
 accord <- Fmaj7
