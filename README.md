@@ -3,6 +3,7 @@ Study of harmony on guitar using data graphics
 
 To use [Fret Printer](https://github.com/andkov/gitRmusic/blob/master/print-fret.R) paste the script below into in a [markdown simulator](https://opencpu.ocpu.io/markdownapp/www/).
 
+```r
 
 ```{r block1, echo=F, message=F}
 library(dplyr)
@@ -23,3 +24,4 @@ accord <- Gm7
 knitr::kable(view_fret(ds,accord), format="markdown",align="c")
 ```
 
+```
