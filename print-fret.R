@@ -124,7 +124,8 @@ view_fret <- function(ds,object=Fmaj7){
   ds2
   
   # frets <- data.frame("fret" = c("o","--I--","","","","--V--","","--VII--","","","","","--XII--","","",""))
-  # 
+  frets <- data.frame("fret" = c("o","---","","","","---","","---","","","","","---","","",""))
+  
   s6 <- ds2 %>% dplyr::filter(string_6) %>% dplyr::select(s6)
   s5 <- ds2 %>% dplyr::filter(string_5) %>% dplyr::select(s5)
   s4 <- ds2 %>% dplyr::filter(string_4) %>% dplyr::select(s4)
